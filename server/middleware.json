@@ -3,7 +3,7 @@
     "loopback#favicon": {}
   },
   "initial": {
-    "compression": {},
+    
     "cors": {
       "params": {
         "origin": true,
@@ -22,13 +22,15 @@
       "loopback#rest": {
       "paths": ["${restApiRoot}"]
     },
-    "./middleware/clientIDcheck": {
-      "paths": "/clientIDcheck"
-    }
-
-
+      "./middleware/clientIDcheck": {
+        "paths": "/clientIDcheck"
+      }
   },
   "files": {
+    "loopback#static": {
+      "params": "$!../client"
+    }
+
   },
   "final": {
     "loopback#urlNotFound": {}

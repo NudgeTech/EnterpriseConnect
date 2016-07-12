@@ -1,0 +1,43 @@
+{
+  "name": "Message",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "date_created": {
+      "type": "date",
+      "required": false
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "created_by": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "location": {
+      "type": "belongsTo",
+      "model": "Location",
+      "foreignKey": ""
+    },
+    "econnectUser": {
+      "type": "belongsTo",
+      "model": "EConnectUser",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

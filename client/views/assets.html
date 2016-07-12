@@ -1,0 +1,129 @@
+
+  <div class="row">
+  <!-- client details -->
+      <div class="col-sm-4" ng-repeat="client in clients">
+           <h2 >{{client.clientname}} </h2>
+           <p style="padding-left:2em"> UUID: {{client.beaconuuid}} </p>
+           <h4>{{site.sitename}}</h2>
+           <p style="padding-left:2em"> Beacon Major: {{site.beaconmajor}}</h2>
+
+           	<h4 ng-repeat="location in assets">Asset list for: {{location.locationname}}</h4>
+          <p style="padding-left:2em" ng-repeat="location in assets"> Beacon Minor: {{location.beaconminor}} </p> 
+
+      </div>
+      <div class="col-sm-4"></div>
+                 
+                 <div class="col-sm-4"> 
+                        <h3>Create an Asset</h3>
+
+                         <form name="AssetForm" novalidate ng-submit="addAsset()">
+                              <div class="form-group"
+                                  ng-class="{'has-error': LocationForm.content.$invalid
+                                    && AssetForm.content.$dirty}">
+
+
+                                    <input type="text" rows="2" class="form-control focus" name="name"
+                                        placeholder="Asset name" autocomplete="off" required
+                                        ng-model="location.assets.name">
+                                    <span class="has-error control-label" ng-show="
+                                        AssetForm.name.$invalid && AssetForm.name.$dirty">
+                                        An Asset name is required
+                                    </span>
+
+                                    </br>
+                               
+                                    <input type="text" rows="2" class="form-control focus" name="type"
+                                        placeholder="Asset Type" autocomplete="off" required
+                                        ng-model="location.assets.type">
+                                    <span class="has-error control-label" ng-show="
+                                        AssetForm.type.$invalid && AssetForm.type.$dirty">
+                                        An Asset type is required
+                                    </span>
+
+                                  </br>
+                                     <input type="text" rows="2" class="form-control focus" name="description"
+                                        placeholder="Asset Description" autocomplete="off" required
+                                        ng-model="location.assets.description">
+                                    <span class="has-error control-label" ng-show="
+                                        AssetForm.description.$invalid && AssetForm.description.$dirty">
+                                        An Asset description is required
+                                    </span>
+                                    </br>
+                              </div>
+                                  <button class="btn btn-primary pull-right" ng-disabled="AssetForm.$invalid">Create Asset</button>
+                          </form>
+
+                 </div>
+
+      
+  </div>
+        </br></br>
+
+
+<div>
+	  <!-- location details -->
+       <h2>Asset List</h2>
+
+    	<table class="table table-hover">
+        <thead>
+          <tr >
+                
+                <th>Asset Name</th>
+                <th>Asset Type </th>
+                <th>Asset Description</th>
+                <th>Last Checked </th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+          </tr>
+        </thead>
+
+        <!-- list out the non complete nudges -->
+        <!-- possibly add a count of completed nudges -->
+
+        <!-- Exmple nudge -->
+        <!-- 
+        	{
+			   "Name": "",
+			    "Description": "",
+			    "LastChecked": "",
+			    "Type": "",
+			    "id": "objectid",
+			    "locationId": "objectid"
+  			} -->
+  
+        <tbody ng-repeat="location in assets">
+                 <tr ng-repeat="asset in location.assets" >
+                 	
+                 
+			                    <td>{{asset.Name}}</td>
+			                    <td>{{asset.Description}}</td>
+			                    <td>{{asset.Type}}</td>
+			                    <td>{{asset.LastChecked}}</td>
+			            
+			                      
+			                   <td> <button class="btn btn-default btn-xs"  ui-sref="delete-asset({ id: asset.id })">
+			                              <span class="glyphicon   glyphicon-trash"></span>
+			                        </button></td>
+
+			                  <td> <button class="btn btn-default btn-xs">
+			                              <span class="glyphicon  glyphicon-edit"></span>
+			                        </button></td>
+
+			                
+             
+                 </tr>
+        </tbody>
+      </table>
+
+  
+</div>
+
+
+
+      
+
+
+
+
+   
+

@@ -22,9 +22,9 @@
       "model": "Site",
       "foreignKey": ""
     },
-    "nudges": {
+    "messages": {
       "type": "hasMany",
-      "model": "Nudge",
+      "model": "Message",
       "foreignKey": ""
     },
     "assets": {
@@ -37,14 +37,14 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$everyone",
       "permission": "ALLOW"
     },
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
+      "principalId": "admin",
+      "permission": "ALLOW"
     },
     {
       "accessType": "EXECUTE",
@@ -58,12 +58,6 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "DENY"
     }
   ],
   "methods": []

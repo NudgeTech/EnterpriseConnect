@@ -15,6 +15,6 @@ module.exports = function(app) {
 		to setup a connector to call an external rest api
   	*/
 
-    console.log('fetching nudges every 15 minutes');
+    console.log('fetching messgaes every 15 minutes');
   }, null, true);
 };

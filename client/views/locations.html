@@ -1,0 +1,90 @@
+<div class="row">
+      <div class="col-sm-4">
+          <h2 ng-repeat="client in clients">{{client.clientname}} </h2>
+           <p  style="padding-left:2em" ng-repeat="client in clients">UUID: {{client.beaconuuid}} </p>
+
+           <h4 ng-repeat="site in locations">{{site.sitename}}</h4>
+           <p  style="padding-left:2em" ng-repeat="site in locations">Beacon Major: {{site.beaconmajor}} </p>
+      </div>
+
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+
+          <h3>Add a new Location</h3>
+
+             <form name="LocationForm" novalidate ng-submit="addLocation()">
+                  <div class="form-group"
+                      ng-class="{'has-error': LocationForm.content.$invalid
+                        && LocationForm.content.$dirty}">
+
+
+                          <input type="text" class="form-control focus" name="content"
+                              placeholder="Loaction name" autocomplete="off" required
+                              ng-model="site.locations.locationname">
+                          <span class="has-error control-label" ng-show="
+                              LocationForm.locationname.$invalid && LocationForm.locationname.$dirty">
+                            A Location name is required.
+                          </span>
+                        </br>
+
+                          <input type="text" class="form-control focus" name="content"
+                              placeholder="Beacon minor ID" autocomplete="off" required
+                              ng-model="site.locations.beaconminor">
+                          <span class="has-error control-label" ng-show="
+                              LocationForm.beaconminor.$invalid && LocationForm.beaconminor.$dirty">
+                            A Beacon Minor ID is required.
+                          </span>
+                  </div>
+                  <button class="btn btn-primary pull-right" ng-disabled="LocationForm.$invalid">Add Location</button>
+          </form>
+      </div>
+</div>
+
+<div>
+
+   
+    	<table class="table table-hover">
+        <thead>
+          <tr >
+                
+                <th>Location Name</th>
+                <th>Beacon Minor ID</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="site in locations">
+                 <tr ng-repeat="location in site.locations" >
+                 	
+                 
+			                    <td>{{location.locationname}}</td>
+			                    <td>{{location.beaconminor}}</td>
+
+
+			                  <td><button  ui-sref="assets({id: location.id})" class="btn btn-link">View Assets</button></td> 
+			                  <td><button  ui-sref="messages({id: location.id})"  class="btn btn-link">View Messages</button></td> 
+			                      
+			                   <td> <button class="btn btn-default btn-xs"  ui-sref="delete-location({ id: location.id })">
+			                              <span class="glyphicon   glyphicon-trash"></span>
+			                        </button></td>
+
+			                  <td> <button class="btn btn-default btn-xs">
+			                              <span class="glyphicon  glyphicon-edit"></span>
+			                        </button></td>
+
+			                
+             
+                 </tr>
+        </tbody>
+      </table>
+
+  
+</div>
+
+
+
+
+      
+
+
+

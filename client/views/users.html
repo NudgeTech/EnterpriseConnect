@@ -1,0 +1,33 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Clients</h2>
+    <!--<div class="list-group">
+    		
+    	<ul>
+         	<li class="list-group-item" ng-repeat="client in clients">{{client.clientname}}</li>
+         	<li class="list-group-item" ng-repeat="client in clients">{{client.beaconuuid}}</li> 
+      
+     	</ul>
+
+	</div>-->
+
+	<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Client</th>
+        <th>Beacon UUID</th>
+        <th>Owner ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="client in clients">
+        <td>{{client.id}}</td>
+          <td>{{client.clientname}}</td>
+        <td>{{client.beaconuuid}}</td>
+        <td>{{client.ownerId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,35 +1,18 @@
 module.exports = function(app) {
-  var User = app.models.User;
+  //var User = app.models.User;
+  var EConnectUser = app.models.EConnectUser;
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
 
-   User.findOne({
-    email: 'admin@admin.com'
-  }, function(err, user) {
 
-      if(!user){
-          
-          console.log ("user does not exisit");
-          var newUser = new User();
+  //create admin role 
 
-          newUser.username = 'admin';
-          newUser.password = 'password';
-          newUser.email = 'admin@admin.com';
-          newUser.id = '101';
-      
-          newUser.save(function(err) {
-      
-              if(!err) {
-                //res.status(status).send(body)
-               console.log("User created with name: " + newUser.username);
-      
-              } else {
-                  console.log("failed");
-              }
-          });
+  //check if admin role exisits and if it doesnt create it
+  Role.findOne({
 
+      where: { name: "admin"}}, function(err, role){
+      if(!role){
 
-           //create the admin role
           Role.create({
              name: 'admin'
                 }, function(err, role) {
@@ -37,23 +20,69 @@ module.exports = function(app) {
 
                   console.log('Created role:', role);
 
-                  //make user an admin
-                  role.principals.create({
-                    principalType: RoleMapping.USER,
-                    principalId: newUser.id
-                  }, function(err, principal) {
-                    if (err) throw err;
-
-                    console.log('Created principal:', principal);
-                  });
+                
               });  
 
+            
+      }else if (role){
 
+          var type = role.name;
+          console.log('found admin role' + type);
+      }
+
+
+  });
+
+    
+
+    //find user and check if already assigned to admin role or not
+   EConnectUser.findOne({
+    where: {email: 'mikecrooks83@gmail.com'} 
+  }, function(err, user) {
+
+      if(!user){
+          
+          console.log ("user does not exisit");
 
       }else if (user){
 
-           console.log ("user does exisit and is already an admin");
-           console.log (user.id);
+           console.log ("user exisits");
+
+           //check if admin already? 
+            var principalId = user.id;
+            console.log(principalId);
+
+           RoleMapping.findOne({
+            where: {principalId: principalId}}, function(err, role){
+              if(!role){
+                  console.log('user is not assigned');
+                  //this is where to assign the user to the role if not already assigned. 
+                    Role.findOne({
+                          where: { name: "admin"}}, function(err, role){
+                          if(!role){
+                            //role does not exisit
+                                
+                          }else if (role){
+
+                              role.principals.create({
+                                principalType: RoleMapping.user,
+                                principalId: principalId
+                              }, function(err, principal){
+                                    console.log("error in mapping role");
+                              });
+                          }
+                     });
+
+
+              }else if (role){
+                 console.log('user is  assigned');
+
+                
+              }
+
+           });
+
+        
         
 
       }

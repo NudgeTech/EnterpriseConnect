@@ -27,9 +27,9 @@
       "model": "Site",
       "foreignKey": ""
     },
-    "nudgeUsers": {
+    "econnectUsers": {
       "type": "hasMany",
-      "model": "NudgeUser",
+      "model": "EConnectUser",
       "foreignKey": ""
     }
   },
@@ -38,7 +38,7 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "ALLOW"
     },
     {
       "accessType": "EXECUTE",
@@ -59,7 +59,7 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW",
-      "property": "__get__nudgeUsers"
+      "property": "__get__econnectUsers"
     },
     {
       "accessType": "EXECUTE",

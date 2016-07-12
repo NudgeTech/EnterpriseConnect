@@ -8,54 +8,54 @@
     ]
   },
   "User": {
-    "dataSource": "nudgeenergyDB"
+    "dataSource": "EnterpriseConnectDB"
   },
   "AccessToken": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": false
   },
   "ACL": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": false
   },
   "Role": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": false
   },
   "Owner": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
   "Client": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
   "Site": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
   "Location": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
-  "NudgeUser": {
-    "dataSource": "nudgeenergyDB",
+  "EConnectUser": {
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
   "UserGroup": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
-  "Nudge": {
-    "dataSource": "nudgeenergyDB",
+  "Message": {
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   },
   "Asset": {
-    "dataSource": "nudgeenergyDB",
+    "dataSource": "EnterpriseConnectDB",
     "public": true
   }
 }

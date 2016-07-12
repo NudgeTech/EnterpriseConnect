@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-sm-4">
+        <h2 >Welcome, {{currentUser.userfirstname}} </h2>
+        <h3 ng-repeat="client in clients">{{client.clientname}}</h3>
+        <p  style="padding-left:2em" ng-repeat="client in clients">UUID: {{client.beaconuuid}} </p>
+
+    </div>
+
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+           <h3>Add a new Site</h3>
+
+         <form name="SiteForm" novalidate ng-submit="addSite()">
+              <div class="form-group"
+                  ng-class="{'has-error': SiteForm.content.$invalid
+                    && SiteForm.content.$dirty}">
+
+
+                      <input type="text" class="form-control focus" name="content"
+                          placeholder="Site name" autocomplete="off" required
+                          ng-model="client.sites.sitename">
+                      <span class="has-error control-label" ng-show="
+                          SiteForm.sitename.$invalid && SiteForm.sitename.$dirty">
+                        A site name is required.
+                      </span>
+                    </br>
+
+                      <input type="text" class="form-control focus" name="content"
+                          placeholder="Beacon major ID" autocomplete="off" required
+                          ng-model="client.sites.beaconmajor">
+                      <span class="has-error control-label" ng-show="
+                          SiteForm.beaconmajor.$invalid && SiteForm.beaconmajor.$dirty">
+                        A Beacon Major ID is required.
+                      </span>
+              </div>
+              <button class="btn btn-primary pull-right" ng-disabled="SiteForm.$invalid">Add Site</button>
+      </form>
+
+    </div>
+
+</div>  
+
+<div>
+
+  
+   
+
+    	<table class="table table-hover">
+        <thead>
+          <tr >
+                
+                <th>Site Name</th>
+                <th>Beacon Major ID</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="client in clients">
+                 <tr ng-repeat="site in client.sites" >
+                 
+                    <td>{{site.sitename}}</td>
+                    <td>{{site.beaconmajor}}</td>
+
+                      
+                   <td> <button class="btn btn-default btn-xs"  ui-sref="delete-site({ id: site.id })">
+                              <span class="glyphicon   glyphicon-trash"></span>
+                        </button></td>
+
+                  <td> <button class="btn btn-default btn-xs">
+                              <span class="glyphicon  glyphicon-edit"></span>
+                        </button></td>
+
+                  <td> <button  ui-sref="locations({id: site.id})" class="btn btn-default btn-xs">
+                              <span class="glyphicon glyphicon glyphicon-map-marker"></span>
+                        </button></td>
+               
+                 </tr>
+        </tbody>
+      </table>
+
+  
+</div>
+
+
+
+
+
+

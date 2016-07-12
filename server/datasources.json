@@ -3,13 +3,13 @@
     "name": "db",
     "connector": "memory"
   },
-  "nudgeenergyDB": {
+  "EnterpriseConnectDB": {
     "host": "localhost",
     "port": "27017",
-    "database": "nudgeenergyDB",
+    "database": "EnterpriseConnectDB",
     "username": "",
     "password": "",
-    "name": "nudgeenergyDB",
+    "name": "EnterpriseConnectDB",
     "connector": "mongodb"
   }
 }
